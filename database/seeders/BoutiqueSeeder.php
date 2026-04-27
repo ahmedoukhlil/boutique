@@ -20,7 +20,7 @@ class BoutiqueSeeder extends Seeder
         // Admin user
         User::firstOrCreate(
             ['email' => 'admin@boutique.com'],
-            ['name' => 'Admin', 'password' => bcrypt('password')]
+            ['name' => 'Admin', 'password' => bcrypt('password'), 'role' => 'admin']
         );
 
         // Catégories

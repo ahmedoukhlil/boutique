@@ -82,6 +82,11 @@
                         {{ __('app.variantes_btn') }}
                     </button>
                     @endif
+                    <button wire:click="supprimerProduit({{ $produit->id }})"
+                        wire:confirm="{{ __('app.supprimer_produit_confirm') }}"
+                        class="py-1.5 px-2 text-xs bg-red-50 hover:bg-red-100 rounded-lg font-medium text-red-600 transition-colors">
+                        🗑️
+                    </button>
                 </div>
             </div>
         </div>

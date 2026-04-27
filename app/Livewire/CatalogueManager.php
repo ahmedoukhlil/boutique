@@ -173,6 +173,13 @@ class CatalogueManager extends Component
         $this->reset(['nvTaille','nvCouleur','nvCodeCouleur','nvPrixSupplement','nvQuantiteStock']);
     }
 
+    public function supprimerProduit(int $id): void
+    {
+        $produit = Produit::findOrFail($id);
+        $produit->variantes()->delete();
+        $produit->delete();
+    }
+
     public function supprimerVariante(int $id): void
     {
         VarianteProduit::findOrFail($id)->delete();

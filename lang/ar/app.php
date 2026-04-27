@@ -199,6 +199,7 @@ return [
     'supplement_prix'       => 'إضافة السعر',
     'stock_initial'         => 'المخزون الأولي',
     'supprimer_variante'    => 'حذف هذا المتغير؟',
+    'supprimer_produit_confirm' => 'حذف هذا المنتج وجميع متغيراته؟',
 
     // Catégories
     'nouvelle_categorie'    => '➕ فئة جديدة',

@@ -199,6 +199,7 @@ return [
     'supplement_prix'       => 'Supplément prix',
     'stock_initial'         => 'Stock initial',
     'supprimer_variante'    => 'Supprimer cette variante ?',
+    'supprimer_produit_confirm' => 'Supprimer ce produit et toutes ses variantes ?',
 
     // Catégories
     'nouvelle_categorie'    => '➕ Nouvelle catégorie',
