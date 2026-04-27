@@ -38,6 +38,10 @@ class CatalogueManager extends Component
     public bool $has_variantes = false;
     public $image;
 
+    // Suppression
+    public bool $showConfirmDelete = false;
+    public ?int $produitASupprimer = null;
+
     // Variantes
     public bool $showVarianteModal = false;
     public ?int $varianteProduitId = null;
@@ -173,11 +177,21 @@ class CatalogueManager extends Component
         $this->reset(['nvTaille','nvCouleur','nvCodeCouleur','nvPrixSupplement','nvQuantiteStock']);
     }
 
-    public function supprimerProduit(int $id): void
+    public function confirmerSuppression(int $id): void
     {
-        $produit = Produit::findOrFail($id);
-        $produit->variantes()->delete();
-        $produit->delete();
+        $this->produitASupprimer = $id;
+        $this->showConfirmDelete = true;
+    }
+
+    public function supprimerProduit(): void
+    {
+        if ($this->produitASupprimer) {
+            $produit = Produit::findOrFail($this->produitASupprimer);
+            $produit->variantes()->delete();
+            $produit->delete();
+        }
+        $this->showConfirmDelete = false;
+        $this->produitASupprimer = null;
     }
 
     public function supprimerVariante(int $id): void

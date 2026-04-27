@@ -82,8 +82,7 @@
                         {{ __('app.variantes_btn') }}
                     </button>
                     @endif
-                    <button wire:click="supprimerProduit({{ $produit->id }})"
-                        wire:confirm="{{ __('app.supprimer_produit_confirm') }}"
+                    <button wire:click="confirmerSuppression({{ $produit->id }})"
                         class="py-1.5 px-2 text-xs bg-red-50 hover:bg-red-100 rounded-lg font-medium text-red-600 transition-colors">
                         🗑️
                     </button>
@@ -230,6 +229,31 @@
                         {{ __('app.ajouter_cette_variante') }}
                     </button>
                 </div>
+            </div>
+        </div>
+    </div>
+    @endif
+
+    {{-- Modale confirmation suppression --}}
+    @if($showConfirmDelete)
+    <div class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-xl w-full max-w-sm p-6">
+            <div class="flex items-center justify-center w-12 h-12 bg-red-100 rounded-full mx-auto mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                </svg>
+            </div>
+            <h3 class="text-lg font-bold text-gray-900 text-center">{{ __('app.supprimer') }}</h3>
+            <p class="text-sm text-gray-500 text-center mt-2">{{ __('app.supprimer_produit_confirm') }}</p>
+            <div class="flex gap-3 mt-6">
+                <button wire:click="$set('showConfirmDelete', false)"
+                    class="flex-1 py-2.5 border border-gray-300 rounded-xl text-sm font-medium text-gray-700 hover:bg-gray-50">
+                    {{ __('app.annuler') }}
+                </button>
+                <button wire:click="supprimerProduit"
+                    class="flex-1 py-2.5 bg-red-600 text-white rounded-xl text-sm font-semibold hover:bg-red-700">
+                    {{ __('app.supprimer') }}
+                </button>
             </div>
         </div>
     </div>
